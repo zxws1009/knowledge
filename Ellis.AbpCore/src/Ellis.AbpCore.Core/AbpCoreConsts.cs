@@ -2,7 +2,7 @@
 {
     public class AbpCoreConsts
     {
-        public const string LocalizationSourceName = "AbpCore";
+        public const string LocalizationSourceName = "AbpCoreTest";
 
         public const string ConnectionStringName = "Default";
     }

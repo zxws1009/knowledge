@@ -16,6 +16,7 @@ namespace Ellis.AbpCore
     {
         public override void PreInitialize()
         {
+            //是否允许游客访问网站
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
 
             //Declare entity types
@@ -25,7 +26,7 @@ namespace Ellis.AbpCore
 
             AbpCoreLocalizationConfigurer.Configure(Configuration.Localization);
 
-            //Enable this line to create a multi-tenant application.
+            //是否允许多租户
             Configuration.MultiTenancy.IsEnabled = true;
 
             //Configure roles

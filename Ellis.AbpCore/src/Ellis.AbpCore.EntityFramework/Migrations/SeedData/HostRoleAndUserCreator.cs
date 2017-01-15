@@ -32,7 +32,7 @@ namespace Ellis.AbpCore.Migrations.SeedData
             var adminRoleForHost = _context.Roles.FirstOrDefault(r => r.TenantId == null && r.Name == StaticRoleNames.Host.Admin);
             if (adminRoleForHost == null)
             {
-                adminRoleForHost = _context.Roles.Add(new Role { Name = StaticRoleNames.Host.Admin, DisplayName = StaticRoleNames.Host.Admin, IsStatic = true });
+                adminRoleForHost = _context.Roles.Add(new Role { Name = StaticRoleNames.Host.Admin, DisplayName = StaticRoleNames.Host.DisplayName, IsStatic = true });
                 _context.SaveChanges();
 
                 //Grant all tenant permissions
@@ -57,16 +57,16 @@ namespace Ellis.AbpCore.Migrations.SeedData
 
             //Admin user for tenancy host
 
-            var adminUserForHost = _context.Users.FirstOrDefault(u => u.TenantId == null && u.UserName == User.AdminUserName);
+            var adminUserForHost = _context.Users.FirstOrDefault(u => u.TenantId == null && u.UserName == "hostadmin");
             if (adminUserForHost == null)
             {
                 adminUserForHost = _context.Users.Add(
                     new User
                     {
-                        UserName = User.AdminUserName,
-                        Name = "System",
+                        UserName = "hostadmin",
+                        Name = "HostAdmin",
                         Surname = "Administrator",
-                        EmailAddress = "admin@aspnetboilerplate.com",
+                        EmailAddress = "hostadmin@aspnetboilerplate.com",
                         IsEmailConfirmed = true,
                         Password = new PasswordHasher().HashPassword(User.DefaultPassword)
                     });
